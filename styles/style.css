@@ -13,7 +13,7 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
-  font-family: var(--main-font, sans-serif);
+  font-family: var(--main-font, sans-serif), sans-serif;
   font-size: var(--main-font-size, 18px);
   font-variation-settings: 'wght' var(--card-text-weight, 400);
   color: var(--main-color, #000);
@@ -35,7 +35,7 @@
   cursor: pointer;
   border: 2px solid var(--border-color, #000);
   background-color: var(--content-bg-color, #fff);
-  font-family: var(--accent-font, system-ui);
+  font-family: var(--accent-font, system-ui), system-ui;
   font-size: var(--accent-font-size, 14px);
   line-height: 0.9;
   transition: box-shadow 0.3s ease;
@@ -66,22 +66,22 @@
   transform: translate(0);
 }
 
-.bordered-button:hover .button__text {
+.button__text {
   position: relative;
   z-index: 1;
   color: var(--invert-color, #fff);
   mix-blend-mode: difference;
 }
 
-.bordered-button:hover .save-button__icon {
+.save-button__icon {
   position: relative;
   z-index: 1;
-  stroke: var(--invert-color, #fff);
+  color: var(--invert-color, #fff);
   mix-blend-mode: difference;
 }
 
 .header {
-  font-family: var(--accent-font, system-ui);
+  font-family: var(--accent-font, system-ui), system-ui;
   margin-block-start: 100px;
   margin-block-end: 100px;
   padding-block: clamp(120px, 7.3239rem + 0.7512vw, 128px);
@@ -164,9 +164,9 @@
 
 .card__image-label {
   position: absolute;
-  top: 25px;
+  inset-block-start: 25px;
   inset-inline-end: 25px;
-  font-family: var(--accent-font, system-ui);
+  font-family: var(--accent-font, system-ui), system-ui;
   font-size: var(--accent-font-size, 14px);
   color: var(--main-color);
   opacity: 0.5;
@@ -299,30 +299,11 @@
   animation: sparkling 0.3s ease-in 0.3s;
 }
 
-@keyframes growing {
-  from {
-    transform: scale(1);
-  }
-
-  to {
-    transform: scale(1.25);
-  }
-}
-
-@keyframes sparkling {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
 /* Конец анимации иконки в виде сердца(.like-icon) */
 
 .card__like-button {
-  padding: 10px 35px;
+  padding: 9px 17px;
+  min-inline-size: 130px;
 }
 
 .save-button {
@@ -347,7 +328,7 @@
   grid-template-rows: repeat(2, auto);
   row-gap: 30px;
   column-gap: 20px;
-  inline-size: 357px;
+  max-inline-size: 357px;
   padding: 30px;
   border: 2px solid var(--border-color, #000);
   color: var(--main-color, #000);
@@ -370,7 +351,7 @@
 .save-dialog__text {
   grid-column: 2 / 3;
   grid-row: 1 / 2;
-  font-family: var(--accent-font, system-ui);
+  font-family: var(--accent-font, system-ui), system-ui;
   font-size: var(--accent-font-size, 14px);
   text-transform: uppercase;
   line-height: 1.5;
@@ -385,6 +366,11 @@
 }
 
 @media (width <= 375px) {
+  .card__image-label {
+    inset-block-start: 23px;
+    inset-inline-end: 11px;
+  }
+
   .save-button {
     flex-direction: column;
   }
@@ -395,7 +381,7 @@
   }
 
   .save-dialog[open] {
-    inline-size: 341px;
+    max-inline-size: 341px;
     padding-inline: 40px;
   }
 }
