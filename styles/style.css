@@ -346,6 +346,7 @@
   inline-size: 39px;
   block-size: 39px;
   align-self: center;
+  color: var(--main-color, #000);
 }
 
 .save-dialog__text {
